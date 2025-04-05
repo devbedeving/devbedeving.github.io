@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Patel - Development Projects Lead</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Liberation Sans', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #222;
+            background-color: #f8f9fa;
+        }
+        #container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 1rem;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        #sidebar {
+            float: right;
+            width: 280px;
+            margin-left: 20px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-radius: 3px;
+            padding: 12px;
+            font-size: 0.875rem;
+        }
+        #sidebar img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .sidebar-title {
+            text-align: center;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #f8f9fa;
+            margin: -12px -12px 12px -12px;
+            padding: 6px;
+            border-bottom: 1px solid #a2a9b1;
+        }
+        .sidebar-section {
+            border-top: 1px solid #a2a9b1;
+            margin-top: 12px;
+            padding-top: 8px;
+        }
+        .sidebar-label {
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 0.25rem;
+            font-family: 'Linux Libertine', Georgia, Times, serif;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 0.25rem;
+            font-family: 'Linux Libertine', Georgia, Times, serif;
+        }
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-family: 'Linux Libertine', Georgia, Times, serif;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        ul {
+            margin-top: 0;
+        }
+        a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        a:visited {
+            color: #0b0080;
+        }
+        .mw-headline {
+            font-weight: bold;
+        }
+        .reference {
+            font-size: 0.75rem;
+            vertical-align: super;
+            color: #0645ad;
+        }
+        .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 1rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        .toc-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .toc ol {
+            counter-reset: item;
+            padding-left: 1.5rem;
+        }
+        .toc li {
+            display: block;
+        }
+        .toc li:before {
+            content: counters(item, ".") " ";
+            counter-increment: item;
+        }
+        #footer {
+            margin-top: 2rem;
+            border-top: 1px solid #a2a9b1;
+            padding-top: 1rem;
+            font-size: 0.75rem;
+            color: #54595d;
+        }
+        .skill-tag {
+            display: inline-block;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-radius: 3px;
+            padding: 2px 6px;
+            margin: 2px;
+            font-size: 0.75rem;
+        }
+        /* Wikipedia-style header */
+        #wikipedia-header {
+            background-color: #f6f6f6;
+            border-bottom: 1px solid #a2a9b1;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+        }
+        #wikipedia-tabs {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        #wikipedia-tabs li {
+            margin-right: 1px;
+            height: 100%;
+        }
+        #wikipedia-tabs a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 1rem;
+            color: #0645ad;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-bottom: none;
+            border-radius: 3px 3px 0 0;
+            position: relative;
+            top: 1px;
+        }
+        #wikipedia-tabs a.active {
+            background-color: white;
+            border-bottom: 1px solid white;
+        }
+        /* Wikipedia-style search */
+        #wikipedia-search {
+            margin-left: auto;
+            position: relative;
+        }
+        #wikipedia-search input {
+            padding: 0.25rem 0.5rem;
+            border: 1px solid #a2a9b1;
+            border-radius: 2px;
+            width: 200px;
+            font-size: 0.875rem;
+        }
+        /* Wikipedia-style side navigation */
+        #mw-panel {
+            float: left;
+            width: 176px;
+            font-size: 0.875rem;
+        }
+        .portal {
+            margin: 0 0.6em 0 0.7em;
+            padding: 0.25em 0;
+            direction: ltr;
+            border-bottom: 1px solid #c8ccd1;
+        }
+        .portal h3 {
+            font-weight: normal;
+            color: #54595d;
+            margin: 0.5em 0 0.33em;
+            padding-bottom: 0.33em;
+            border-bottom: 1px solid #c8ccd1;
+        }
+        .portal .body {
+            margin-top: 0.5em;
+            margin-bottom: 0.8em;
+        }
+        .portal .body ul {
+            list-style: none;
+            padding-left: 0.8em;
+            margin: 0.3em 0 0 0.5em;
+        }
+        /* Wikipedia content layout */
+        #wikipedia-content {
+            padding-left: 1.5rem;
+            margin-left: 186px;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #sidebar {
+                float: none;
+                width: auto;
+                margin-left: 0;
+            }
+            #mw-panel {
+                display: none;
+            }
+            #wikipedia-content {
+                margin-left: 0;
+                padding-left: 0;
+            }
+            #wikipedia-search {
+                display: none;
+            }
+        }
+        .contact-info a {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+        .contact-info i {
+            margin-right: 5px;
+            font-size: 0.875rem;
+            color: #54595d;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* Reduced top margin from 10% to 5% */
+            padding: 20px;
+            border: 1px solid #a2a9b1;
+            border-radius: 3px;
+            width: 90%; /* Increased width from 80% to 90% */
+            max-width: 800px; /* Increased max-width from 600px to 800px */
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .close-modal {
+            color: #54595d;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-modal:hover {
+            color: black;
+        }
+        
+        .modal-header {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #222;
+            font-family: 'Linux Libertine', Georgia, Times, serif;
+        }
+        
+        .contact-modal-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            flex: 1 0 45%;
+            min-width: 250px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-radius: 3px;
+        }
+        
+        .contact-item h3 {
+            margin-top: 0;
+            color: #222;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            color: #0645ad;
+        }
+        
+        .resume-container {
+            width: 100%;
+            height: 700px; /* Increased height from 500px to 700px */
+            border: 1px solid #a2a9b1;
+        }
+        
+        .resume-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .download-resume {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            border-radius: 3px;
+            color: #0645ad;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .download-resume:hover {
+            background-color: #eaecf0;
+            text-decoration: none;
+        }
+        
+        .download-resume i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="wikipedia-header">
+            <ul id="wikipedia-tabs">
+                <li><a href="#" class="active">Article</a></li>
+                <li><a href="#" id="talk-tab">Talk</a></li>
+                <li><a href="#" id="read-tab">Read</a></li>
+                <li><a href="#">View source</a></li>
+                <li><a href="#">View history</a></li>
+            </ul>
+            <div id="wikipedia-search">
+                <input type="text" placeholder="Search">
+            </div>
+        </div>
+
+        <div id="mw-panel">
+            <div class="portal" id="p-logo">
+                <a href="#" class="mw-wiki-logo"></a>
+            </div>
+            <div class="portal" id="p-navigation">
+                <h3>Navigation</h3>
+                <div class="body">
+                    <ul>
+                        <li><a href="#" title="Main page">Main page</a></li>
+                        <li><a href="#" title="Contents">Contents</a></li>
+                        <li><a href="#" title="Current events">Current events</a></li>
+                        <li><a href="#" title="Random article">Random article</a></li>
+                        <li><a href="#about">About Dev</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portal" id="p-wiki">
+                <h3>Professional</h3>
+                <div class="body">
+                    <ul>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#personal">Personal Info</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="wikipedia-content">
+            <div id="sidebar">
+                <div class="sidebar-title">Dev Patel</div>
+                <img src="pixelPatel.png" alt="Pixel art portrait of Dev Patel in a dark blue suit with a red tie" style="max-width: 100%; height: auto;">
+                <div style="text-align: center; font-size: 0.75rem; margin-top: 5px; font-style: italic;">Pixel art portrait</div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Occupation</div>
+                    <div>Development Projects Lead</div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Security Clearance</div>
+                    <div>Secret (Pending)</div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Education</div>
+                    <div>
+                        <p>
+                            <a href="https://www.uml.edu/" target="_blank">University of Massachusetts-Lowell</a><br>
+                            <span>Bachelor of Science, Information Systems (in progress)</span>
+                        </p>
+                        <p>
+                            <a href="https://www.bristolcc.edu/" target="_blank">Bristol Community College</a><br>
+                            <span>Computer Information Systems</span>
+                        </p>
+                        <p>
+                            <a href="https://quartermaster.army.mil/" target="_blank">US Army Quartermaster School</a><br>
+                            <span>092A10 - Automated Logistics Specialist Course</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Military service</div>
+                    <div><a href="https://www.massnationalguard.org/" target="_blank">MA Army National Guard</a><br>
+                        Automated Logistical Specialist</div>
+                </div>
+                <div class="sidebar-section">
+                    <div class="sidebar-label">Languages</div>
+                    <div>English, Gujarati (native), Hindi</div>
+                </div>
+                <div class="sidebar-section" id="contact">
+                    <div class="sidebar-label">Contact</div>
+                    <div class="contact-info">
+                        <a href="mailto:devp29422@gmail.com"><i class="fas fa-envelope"></i>devp29422@gmail.com</a><br>
+                        <a href="tel:+16672733398"><i class="fas fa-phone"></i>+1-667-273-3398</a>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Dev Patel</h1>
+            <p>
+                <b>Dev Patel</b> is an American information systems professional and Development Projects Lead with expertise in ERP systems, project management, and operational efficiency. He currently works at <a href="https://www.dwclark.com" target="_blank">D.W. Clark</a> in Taunton, Massachusetts, while also serving as an Automated Logistical Specialist in the Massachusetts Army National Guard.
+            </p>
+
+            <div class="toc">
+                <div class="toc-title">Contents</div>
+                <ol>
+                    <li><a href="#education">Education and background</a></li>
+                    <li><a href="#experience">Professional experience</a>
+                        <ol>
+                            <li><a href="#information-systems">Information Systems Lead</a></li>
+                            <li><a href="#military">Military service</a></li>
+                            <li><a href="#retail">Retail management (2020-2024)</a></li>
+                        </ol>
+                    </li>
+                    <li><a href="#skills">Skills and expertise</a></li>
+                    <li><a href="#personal">Personal information</a></li>
+                    <li><a href="#references">References</a></li>
+                </ol>
+            </div>
+
+            <h2 id="education"><span class="mw-headline">Education and background</span></h2>
+            <p>
+                Patel graduated from New Bedford High School with honors in 2020.<sup class="reference">[1]</sup> He pursued higher education at <a href="https://www.bristolcc.edu/" target="_blank">Bristol Community College</a>, studying Computer Information Systems until January 2023. As of 2025, he is continuing his education at the <a href="https://www.uml.edu/" target="_blank">University of Massachusetts-Lowell</a>, working toward a Bachelor's degree in Information Systems.<sup class="reference">[2]</sup>
+            </p>
+
+            <h2 id="experience"><span class="mw-headline">Professional experience</span></h2>
+            
+            <h3 id="information-systems">Information Systems Lead</h3>
+            <p>
+                Since August 2024, Patel has served as the Operations Information Systems Lead at <a href="https://www.dwclark.com" target="_blank">D.W. Clark</a> in Taunton, Massachusetts. His responsibilities include facilitating the shipping and testing of customer parts, ensuring quality assurance and compliance with customer and government standards, overseeing IT operations, managing systems, ensuring data security, and developing efficiency within the <a href="https://www.odoo.com/" target="_blank">Odoo ERP</a> system utilizing Python for system enhancements and workflow process improvements.<sup class="reference">[5]</sup>
+            </p>
+            
+            <h3 id="military">Military service</h3>
+            <p>
+                In February 2024, Patel joined the <a href="https://www.massnationalguard.org/" target="_blank">Massachusetts Army National Guard</a> as an Automated Logistical Specialist based in Quincy, Massachusetts. In this role, he manages stock records and warehouse operations using <a href="https://www.sap.com/" target="_blank">SAP ERP</a> systems, ensuring accurate inventory accounting and timely distribution of equipment, which has improved equipment availability and reduced downtime. His Secret Clearance application is currently pending.<sup class="reference">[4]</sup>
+            </p>
+            <p>
+                Patel graduated from the <a href="https://quartermaster.army.mil/" target="_blank">US Army Quartermaster School, Logistics Training Department</a>'s Automated Logistics Specialist Course with a 94.95 Class Average.
+            </p>
+
+            <h3 id="retail">Retail management (2020-2024)</h3>
+            <p>
+                Patel began his professional career in June 2020 as a Store Manager at County General Convenience and Bizarro Food Marts in New Bedford, Massachusetts. During his nearly four-year tenure, he demonstrated skills in inventory management, tax compliance, sales goal setting, and team leadership. His management recognized his effectiveness in staffing, leadership, administration, and problem-solving.<sup class="reference">[3]</sup>
+            </p>
+
+            <h2 id="skills"><span class="mw-headline">Skills and expertise</span></h2>
+            <p>
+                Patel has developed a diverse skill set throughout his education and career:
+            </p>
+            <p>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Odoo ERP</span>
+                <span class="skill-tag">SAP ERP</span>
+                <span class="skill-tag">Process Optimization</span>
+                <span class="skill-tag">Change Management</span>
+                <span class="skill-tag">Project Management</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Business Development</span>
+                <span class="skill-tag">Production Planning</span>
+                <span class="skill-tag">Contract Management</span>
+                <span class="skill-tag">Team Building</span>
+                <span class="skill-tag">Public Speaking</span>
+                <span class="skill-tag">Operational Efficiency</span>
+                <span class="skill-tag">Quality Assurance</span>
+            </p>
+            <p>
+                He is known for his ability to orchestrate projects and enhance operational efficiency through innovative use of ERP systems, with a focus on quality and compliance.<sup class="reference">[6]</sup>
+            </p>
+
+            <h2 id="personal"><span class="mw-headline">Personal information</span></h2>
+            <p>
+                Patel was born on April 29, 2003, in Ahmedabad, India. He is multilingual, being highly proficient in English and Hindi, with Gujarati as his native language.<sup class="reference">[7]</sup> He maintains his residence in New Bedford, Massachusetts, while balancing his professional career, military service, and ongoing education.
+            </p>
+
+            <h2 id="references"><span class="mw-headline">References</span></h2>
+            <ol>
+                <li>Dev Patel Resume, Education Section - New Bedford High School, 2016-2020</li>
+                <li>Dev Patel Resume, Education Section - University of Massachusetts-Lowell, 2025-Present</li>
+                <li>Dev Patel Resume, Employment History - Store Manager, County General Convenience, Bizarro Food Marts</li>
+                <li>Dev Patel Resume, Employment History - Automated Logistical Specialist, MA Army National Guard</li>
+                <li>Dev Patel Resume, Employment History - Operations Information Systems Lead, D.W. Clark</li>
+                <li>Dev Patel Resume, Professional Summary</li>
+                <li>Dev Patel Resume, Languages Section</li>
+            </ol>
+
+            <div id="footer">
+                <p>This page was last edited on 5 April 2025, at 12:00 (EDT).</p>
+                <p>This page is hosted on GitHub Pages and is intended as a portfolio representation. Not affiliated with Wikipedia.</p>
+                <p>Copyright © 2025 Dev Patel. All rights reserved.</p>
+                <div style="text-align: center; margin-top: 10px;">
+                    <a href="https://www.linkedin.com/in/dev-patel01/" target="_blank" style="margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:devp29422@gmail.com" style="margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-contact-modal">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Contact Dev Patel</h2>
+            </div>
+            <div class="contact-modal-content">
+                <div class="contact-item">
+                    <h3>Direct Contact</h3>
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:devp29422@gmail.com">devp29422@gmail.com</a></p>
+                    <p><i class="fas fa-phone"></i> Phone: <a href="tel:+16672733398">+1-667-273-3398</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Social Media</h3>
+                    <p><i class="fab fa-linkedin"></i> LinkedIn: <a href="https://www.linkedin.com/in/dev-patel01/" target="_blank">dev-patel01</a></p>
+                </div>
+                <div class="contact-item">
+                    <h3>Professional</h3>
+                    <p><i class="fas fa-building"></i> Current Workplace: <a href="https://www.dwclark.com" target="_blank">D.W. Clark</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: Taunton, Massachusetts</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Availability</h3>
+                    <p><i class="far fa-clock"></i> Business Hours: Monday-Friday, 9 AM - 5 PM (EST)</p>
+                    <p><i class="fas fa-info-circle"></i> Response Time: Usually within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-resume-modal">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">Dev Patel's Resume</h2>
+            </div>
+            <div class="resume-container">
+                <iframe src="docs/DevPatel_Resume.pdf"></iframe>
+            </div>
+            <a href="docs/DevPatel_Resume.pdf" download class="download-resume">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const contactModal = document.getElementById("contact-modal");
+        const resumeModal = document.getElementById("resume-modal");
+        const talkButton = document.getElementById("talk-tab");
+        const readButton = document.getElementById("read-tab");
+        const closeContactModal = document.getElementById("close-contact-modal");
+        const closeResumeModal = document.getElementById("close-resume-modal");
+        
+        // Talk button opens contact modal
+        talkButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            contactModal.style.display = "block";
+        });
+        
+        // Read button opens resume modal
+        readButton.addEventListener("click", function(e) {
+            e.preventDefault();
+            resumeModal.style.display = "block";
+        });
+        
+        // Close buttons for modals
+        closeContactModal.addEventListener("click", function() {
+            contactModal.style.display = "none";
+        });
+        
+        closeResumeModal.addEventListener("click", function() {
+            resumeModal.style.display = "none";
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener("click", function(event) {
+            if (event.target == contactModal) {
+                contactModal.style.display = "none";
+            } else if (event.target == resumeModal) {
+                resumeModal.style.display = "none";
+            }
+        });
+        
+        // Close modal with Escape key
+        window.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                contactModal.style.display = "none";
+                resumeModal.style.display = "none";
+            }
+        });
+        
+        // Mobile menu functionality (from previous code)
+        document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+            const menu = document.querySelector('.nav-menu');
+            if (menu) {
+                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
